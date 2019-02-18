@@ -1,0 +1,24 @@
+package com.lyle.proxy.statics;
+
+import com.lyle.proxy.Person;
+
+/**
+ * 
+ * @author Lyle
+ * @date 2019-02-17 下午3:17
+ * @version v1.0
+ * @since 1.8  
+ */
+public class Student implements Person {
+
+  private String name;
+
+  public Student(String name){
+    this.name = name;
+  }
+
+  @Override
+  public void giveMoney() {
+    System.out.println(name + "上交班费50元");
+  }
+}

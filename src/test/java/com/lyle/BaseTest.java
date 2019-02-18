@@ -1,17 +1,17 @@
-package com.lyle.jvm;
+package com.lyle;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+/**
+ * 
+ * @author Lyle
+ * @date 2019-02-17 下午9:11
+ * @version v1.0
+ * @since 1.8  
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JvmApplicationTests {
-
-  @Test
-  public void contextLoads() {
-  }
-
+public class BaseTest {
 }
-
