@@ -23,6 +23,7 @@ sourceCompatibility = '1.8'
 repositories {
     mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'https://maven2.pavlab.msl.ubc.ca/' }
     mavenCentral()
 }
 
@@ -30,5 +31,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.openjdk.jol:jol-core:0.9'
+    implementation 'classmexer:classmexer:0.03'
     compileOnly('org.projectlombok:lombok')
 }
