@@ -14,6 +14,7 @@ public class TestObjectSize {
 
     int a;//4
     int b;//8
+    //静态属性不算在对象大小内
     static int c;
 
     public static void main(String[] args) throws IOException {

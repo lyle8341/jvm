@@ -11,6 +11,9 @@ summary jvm
       sudo jinfo -flags 5670
       sudo jmap -heap 8842
       jcmd 5670 VM.flags
+      jcmd 2209 help
+      
+      
 
   ```jvm
   -XX:CICompilerCount=3 
@@ -25,5 +28,3 @@ summary jvm
   -XX:+UseFastUnorderedTimeStamps 
   -XX:+UseParallelGC
   ```
-  
-  
