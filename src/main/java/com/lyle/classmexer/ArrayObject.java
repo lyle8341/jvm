@@ -10,8 +10,8 @@ import com.javamex.classmexer.MemoryUtil;
  */
 public class ArrayObject {
 
-  int[] arr = new int[1];
-
+//  byte[] arr = new byte[1];
+String s = "22222";
   public static void main(String[] args) {
     ArrayObject testObjectSize = new ArrayObject();
     // 打印对象的shallow size
