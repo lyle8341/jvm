@@ -4,7 +4,7 @@
 
 + use api
   1. implementation 'org.openjdk.jol:jol-core:0.9'
-  2. com.lyle.jol.JolDemo
+  2. com.lyle.jvm.jol.JolDemo
 + Command Line Tool
   ```bash
   java -jar jol-cli/target/jol-cli.jar internals java.util.HashMap
