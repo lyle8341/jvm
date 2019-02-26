@@ -10,7 +10,7 @@
   + 新生代的一个单线程的GC
   + *stop-the-world*
 
-+ 2 . ParNew
++ 2 . ParNew  
 ![parnew](parnew.jpg)
   + **复制算法**
   + 新生代的收集器
@@ -32,7 +32,7 @@
   + Parallel Scavenge收集器的老年代版本
   + *stop-the-world*
 
-+ 6 . CMS
++ 6 . CMS  
 ![cms](cms.jpg)
   + **标记-清除算法**
   + 老年代收集器
@@ -85,11 +85,9 @@
     -XX:+UseParallelOldGC（该参数隐式启用-XX:+UseParallelGC）
 
 
-+ 9 . 对比
++ 9 . 对比  
 ![compare](Types-of-Java-Garbage-Collectors3_th_thumb.jpg)
 
-
-https://juejin.im/post/5c27ab426fb9a049be5d9318
 
 + -XX:UseSerialGC
 
