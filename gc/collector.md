@@ -90,3 +90,88 @@
 
 
 https://juejin.im/post/5c27ab426fb9a049be5d9318
+
++ -XX:UseSerialGC
+
+      Heap
+       def new generation   total 57856K, used 1544K [0x0000000705800000, 0x00000007096c0000, 0x0000000743aa0000)
+        eden space 51456K,   3% used [0x0000000705800000, 0x0000000705982038, 0x0000000708a40000)
+        from space 6400K,   0% used [0x0000000708a40000, 0x0000000708a40000, 0x0000000709080000)
+        to   space 6400K,   0% used [0x0000000709080000, 0x0000000709080000, 0x00000007096c0000)
+       tenured generation   total 128384K, used 2591K [0x0000000743aa0000, 0x000000074b800000, 0x00000007c0000000)
+         the space 128384K,   2% used [0x0000000743aa0000, 0x0000000743d27d68, 0x0000000743d27e00, 0x000000074b800000)
+       Metaspace       used 2980K, capacity 4496K, committed 4864K, reserved 1056768K
+        class space    used 325K, capacity 388K, committed 512K, reserved 1048576K
+        
++ -XX:+UseParNewGC
+
+      Heap
+       par new generation   total 57856K, used 514K [0x0000000705800000, 0x00000007096c0000, 0x0000000743aa0000)
+        eden space 51456K,   1% used [0x0000000705800000, 0x0000000705880bb0, 0x0000000708a40000)
+        from space 6400K,   0% used [0x0000000708a40000, 0x0000000708a40000, 0x0000000709080000)
+        to   space 6400K,   0% used [0x0000000709080000, 0x0000000709080000, 0x00000007096c0000)
+       tenured generation   total 128384K, used 2617K [0x0000000743aa0000, 0x000000074b800000, 0x00000007c0000000)
+         the space 128384K,   2% used [0x0000000743aa0000, 0x0000000743d2e7d8, 0x0000000743d2e800, 0x000000074b800000)
+       Metaspace       used 3014K, capacity 4496K, committed 4864K, reserved 1056768K
+        class space    used 330K, capacity 388K, committed 512K, reserved 1048576K
+
++ -XX:+UseParallelGC
+
+      Heap
+       PSYoungGen      total 56320K, used 486K [0x0000000781d80000, 0x0000000785c00000, 0x00000007c0000000)
+        eden space 48640K, 1% used [0x0000000781d80000,0x0000000781df9b10,0x0000000784d00000)
+        from space 7680K, 0% used [0x0000000784d00000,0x0000000784d00000,0x0000000785480000)
+        to   space 7680K, 0% used [0x0000000785480000,0x0000000785480000,0x0000000785c00000)
+       ParOldGen       total 128512K, used 2617K [0x0000000705800000, 0x000000070d580000, 0x0000000781d80000)
+        object space 128512K, 2% used [0x0000000705800000,0x0000000705a8e7d8,0x000000070d580000)
+       Metaspace       used 3014K, capacity 4496K, committed 4864K, reserved 1056768K
+        class space    used 330K, capacity 388K, committed 512K, reserved 1048576K
+
+
++ -XX:+UseParallelOldGC
+
+      Heap
+       PSYoungGen      total 56320K, used 486K [0x0000000781d80000, 0x0000000785c00000, 0x00000007c0000000)
+        eden space 48640K, 1% used [0x0000000781d80000,0x0000000781df9b10,0x0000000784d00000)
+        from space 7680K, 0% used [0x0000000784d00000,0x0000000784d00000,0x0000000785480000)
+        to   space 7680K, 0% used [0x0000000785480000,0x0000000785480000,0x0000000785c00000)
+       ParOldGen       total 128512K, used 2617K [0x0000000705800000, 0x000000070d580000, 0x0000000781d80000)
+        object space 128512K, 2% used [0x0000000705800000,0x0000000705a8e7d8,0x000000070d580000)
+       Metaspace       used 3014K, capacity 4496K, committed 4864K, reserved 1056768K
+        class space    used 330K, capacity 388K, committed 512K, reserved 1048576K
+
+
++ -XX:-UseParNewGC -XX:+UseConcMarkSweepGC
+
+      Heap
+       def new generation   total 57856K, used 514K [0x0000000705800000, 0x00000007096c0000, 0x000000070ab30000)
+        eden space 51456K,   1% used [0x0000000705800000, 0x0000000705880bb0, 0x0000000708a40000)
+        from space 6400K,   0% used [0x0000000708a40000, 0x0000000708a40000, 0x0000000709080000)
+        to   space 6400K,   0% used [0x0000000709080000, 0x0000000709080000, 0x00000007096c0000)
+       concurrent mark-sweep generation total 128384K, used 2622K [0x000000070ab30000, 0x0000000712890000, 0x00000007c0000000)
+       Metaspace       used 3014K, capacity 4496K, committed 4864K, reserved 1056768K
+        class space    used 330K, capacity 388K, committed 512K, reserved 1048576K
+> warning: Using the DefNew young collector with the CMS collector is deprecated and will likely be removed in a future release        
+        
++ -XX:+UseParNewGC -XX:+UseConcMarkSweepGC  
+   
+      Heap
+       par new generation   total 57856K, used 514K [0x0000000705800000, 0x00000007096c0000, 0x000000071a4c0000)
+        eden space 51456K,   1% used [0x0000000705800000, 0x0000000705880bb0, 0x0000000708a40000)
+        from space 6400K,   0% used [0x0000000708a40000, 0x0000000708a40000, 0x0000000709080000)
+        to   space 6400K,   0% used [0x0000000709080000, 0x0000000709080000, 0x00000007096c0000)
+       concurrent mark-sweep generation total 128384K, used 2622K [0x000000071a4c0000, 0x0000000722220000, 0x00000007c0000000)
+       Metaspace       used 3015K, capacity 4496K, committed 4864K, reserved 1056768K
+        class space    used 330K, capacity 388K, committed 512K, reserved 1048576K     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
