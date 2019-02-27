@@ -50,7 +50,7 @@
 
 
 + 搭配问题
-  + 有一个分代式GC框架，Serial/Serial Old/ParNew/CMS都在这个框架内
+  + 有一个分代式GC框架，Serial(DefNew)/ParNew/CMS/Serial Old(MSC)都在这个框架内
   + ParallelScavenge与G1则不在这个框架内，而是各自采用了自己特别的框架。这是因为新的GC实现时发现原本的分代式GC框架用起来不顺手
   + **JVM仅指定新生代垃圾收集器的情况下，默认老年代采用Serial Old垃圾收集器（带压缩）**
     + -XX:+UseSerialGC  
@@ -87,6 +87,17 @@
 
 + 9 . 对比  
 ![compare](Types-of-Java-Garbage-Collectors3_th_thumb.jpg)
+
++ 10 . scavenger
+  + 没有独立的 _mark_ 与 _copy_ 阶段的，而是合在一起做一个动作，就叫scavenge
+   （或evacuate，或者就叫copy）。也就是说，每发现一个这次收集中尚未访问过的活对象就
+    直接copy到新地方，同时设置forwarding pointer。  
+    
+    
++ 11 . ParallelScavenge和ParNew区别
+  * 1 . PS以前是广度优先顺序来遍历对象图的，JDK6的时候改为默认用深度优先顺序遍历，并留有一个UseDepthFirstScavengeOrder参数来选择是用深度还是广度优先。在JDK6u18之后这个参数被去掉，**PS变为只用深度优先遍历**,**ParNew则是一直都只用广度优先顺序来遍历**
+  * 2 . PS完整实现了adaptive size policy，而ParNew及“分代式GC框架”内的其它GC都没有实现完（倒不是不能实现，就是麻烦+没人力资源去做）。所以千万千万别在用ParNew+CMS的组合下用UseAdaptiveSizePolicy，请只在使用UseParallelGC或UseParallelOldGC的时候用它。
+  * 3 . ParNew可以跟CMS搭配使用，而ParallelScavenge不能。
 
 
 + -XX:UseSerialGC
@@ -161,14 +172,23 @@
        concurrent mark-sweep generation total 128384K, used 2622K [0x000000071a4c0000, 0x0000000722220000, 0x00000007c0000000)
        Metaspace       used 3015K, capacity 4496K, committed 4864K, reserved 1056768K
         class space    used 330K, capacity 388K, committed 512K, reserved 1048576K     
+    
+        
++ 名词解释
+  > DefNewGeneration: default new generation  
+    ParNewGeneration: parallel new generation  
+    MSC: MarkSweepCompact  
+    Scavenge或者叫scavenging GC: copying GC的另一種叫法而已  
+    **PSMarkSweep**: ParallelScavenge的MarkSweep(LISP2演算法的mark-compact收集器)  
+    **PSCompact**: ParallelScavenge-MarkCompact  
+    
         
         
-        
-        
-        
-        
-        
-        
+**Reference**
+>[名词解释][1]
+
+[1]: https://www.itread01.com/content/1547992271.html "名词解释"  
+  
         
         
         

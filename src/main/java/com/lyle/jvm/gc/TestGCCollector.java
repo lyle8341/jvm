@@ -10,8 +10,9 @@ package com.lyle.jvm.gc;
  */
 public class TestGCCollector {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     byte[] a = new byte[1024*1024*2];
     System.gc();
+    Thread.sleep(1000000);
   }
 }
