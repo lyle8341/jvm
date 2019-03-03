@@ -1,4 +1,4 @@
-#### jstat
+#### jstat(JVM statistics Monitoring)
 
 类装载，内存，垃圾收集，jit编译的信息
 

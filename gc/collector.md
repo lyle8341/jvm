@@ -46,7 +46,82 @@
   * 保留新生代和老年代的分代概念(但两者不再是物理隔离的)
   * 从整体来看是基于**标记整理算法**，从局部（两个Region之间）来看是**基于复制算法**
   * 使用多个GC线程，每次优先回收价值最大的Region
-
+  * _young gc phases_
+    - G1 stops the world
+    - G1 builds a "collection set"
+      - the regions that will be subject to collction
+    - in a young gc,the collection set contains:
+      - eden regions
+      - survivor regions
+    - First phase:**Root Scanning**
+      - static and local objects are scanned
+    - Second phase:**Update RS**
+      - drains the dirty card queue to update the RS
+    - Third phase:**Process RS**
+      - detect the eden objects pointed by old objects
+    - Fourth phase:**Object Copy**
+      - the object graph is traversed
+      - live objects copied to survivor/old region
+    - Fifth phase:**Reference Processing**
+      - soft,weak,phantom,final jni weak references
+      - always enable -XX:+ParallelRefProcEnabled
+      - more details with -XX:+PrintReferenceGC
+  * _old gc phase_
+    - G1 stops the world
+    - performs a young gc
+      - Piggybacks old region roots detection(initial-mark)
+    - G1 resumes application threads
+    - concurrent old region marking proceeds
+      - keeps track of references(soft,weak,etc)
+      - computes per-region liveness information
+    - G1 stops the world
+    - remark phase
+      - SATB queue processing
+      - Reference processing
+    - cleanup phase
+      - empty old regions are immediately recycled
+    - application threads are resumed
+    - cleanup phase->recycles empty old regions
+    - non-empty old regions processing
+      - happens during the next young gc cycle
+      - no rush to clean the garbage in old regions
+  * G1 mixed GC
+    - "Mixed" GC - piggybacked on young gcs
+    - the collection set includes
+      - part of the remaining old regions to collect
+      - eden regions
+      - survivor regions
+    - algorithm is identical to(相同) young gc
+      - stop-the-world,parallel,copying     
+    - old regions with most garbage are chosen first
+    - G1 wastes some heap space
+    - Mixed GCs are stopped
+  * avoid at all costs full gcs
+  * grep the gc logs for "Full GC"
+    - use -XX:+PrintAdaptiveSizePolicy to know what caused it
+  * avoid too many "humongous" allocations
+    - Example
+      - Max heap size 32G -> region size = 16M
+      - Humongous limit -> 8M
+      - allocations of 12M arrays
+      - set region size to 32M
+      - Humongous limit is now 16M
+        - 12M arrays are not humongous anymore
+       
+       
+       
+       
+       
+          
+            
+        - G1 schedules an old GC based on heap usage
+          - by default when the entire heap is 45% full
+            - checke after a young gc or a humongous allocation
+        - The old GC consists of old region marking    
+          - finds all the live objects in the old regions
+          - old region marking is concurrent
+        - Concurrent marking
+        - Snapshot-at-the-beginning(SATB)
 
 
 + 搭配问题

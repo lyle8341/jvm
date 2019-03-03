@@ -8,4 +8,4 @@
     jinfo -flag -PrintGC 43520
     jinfo -flag -PrintGCDetails 43520
     
-    
+    jinfo -flag key=value
