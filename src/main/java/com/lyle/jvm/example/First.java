@@ -3,7 +3,6 @@ package com.lyle.jvm.example;
 /**
  * @author Lyle
  * @version v1.0
- * @date 2019-03-05 下午2:16
  * @since 1.8
  */
 public class First {

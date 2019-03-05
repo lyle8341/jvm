@@ -7,7 +7,6 @@ import java.util.Scanner;
  *
  * @author Lyle
  * @version v1.0
- * @date 2019-03-05 下午4:03
  * @since 1.8
  */
 abstract class Pause {
