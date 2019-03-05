@@ -17,5 +17,5 @@ java -XX:+PrintFlagsFinal -version |grep JVMParamName
     NewSize:新生代初始化内存的大小
     MaxnewSize:新生代可被分配的内存的最大上限
     Xmn:对newSize、MaxnewSize两个参数同时进行配置(注意：JDK1.4之后才有该参数)
-    NewRatio:设置老年代(除去持久代)与新生代的比例
+    NewRatio:设置老年代(除去永久代)与新生代的比例
     SurvivorRatio:表示伊甸园区(Eden)是幸存区To大小的10倍(也是幸存区From的10倍)

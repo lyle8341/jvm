@@ -5,7 +5,6 @@ package com.lyle.jvm.gc;
  * -verbose:gc -XX:+PrintGCDetails
  *
  * @author Lyle
- * @date 2019-02-24 上午10:04
  * @version v1.0
  * @since 1.8  
  */

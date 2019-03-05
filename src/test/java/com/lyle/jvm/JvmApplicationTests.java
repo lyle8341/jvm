@@ -21,4 +21,9 @@ public class JvmApplicationTests extends BaseTest {
     final boolean authorized = proxy.authorized(score);
     System.out.println(authorized);
   }
+
+  @Test
+  public void testAutowire(){
+
+  }
 }
