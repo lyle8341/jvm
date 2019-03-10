@@ -8,7 +8,7 @@ java -XX:+PrintFlagsFinal -version |grep JVMParamName
     Xss：每个线程的stack大小（栈）
     Xmx：JAVA HEAP的最大值、默认为物理内存的1/4
     Xms：JAVA HEAP的初始值，server端最好Xms与Xmx一样
-    Xmn：JAVA HEAP young区的大小
+    Xmn：JAVA HEAP young区的大小(（eden+ 2 survivor space))
 ~~XX:PermSize：设定内存的永久保存区域~~  
 ~~XX:MaxPermSize：设定最大内存的永久保存区域~~
    

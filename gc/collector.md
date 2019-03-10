@@ -174,7 +174,7 @@
   * 2 . PS完整实现了adaptive size policy，而ParNew及“分代式GC框架”内的其它GC都没有实现完（倒不是不能实现，就是麻烦+没人力资源去做）。所以千万千万别在用ParNew+CMS的组合下用UseAdaptiveSizePolicy，请只在使用UseParallelGC或UseParallelOldGC的时候用它。
   * 3 . ParNew可以跟CMS搭配使用，而ParallelScavenge不能。
 
-
+> **Heap后面的内容为进程退出时输出当前内存各区域的分配情况**
 + -XX:UseSerialGC
 
       Heap
@@ -247,6 +247,24 @@
        concurrent mark-sweep generation total 128384K, used 2622K [0x000000071a4c0000, 0x0000000722220000, 0x00000007c0000000)
        Metaspace       used 3015K, capacity 4496K, committed 4864K, reserved 1056768K
         class space    used 330K, capacity 388K, committed 512K, reserved 1048576K     
+
++ 看懂GC日志
+  - GC日志中的PSYoungGen（PS是指Parallel Scavenge）eden space 加上一个 survivor space (也就是from space)的大小，另外一个survivor space (也就是to space)是用来通过复制算法存放存活对象的，不在回收区域之内
+    > minor
+  
+                                                GC前      eden+from        GC后   heap
+          [GC (Allocation Failure) [PSYoungGen: 5635K->352K(7168K)] 5635K->1384K(19456K), 0.0016548 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] 
+                                                       GC后         GC前
+  
+    > major 
+       
+                                              GC前   eden+from                     GC后   old     GC前          heap                GC前        metaspace
+          [Full GC (System.gc()) [PSYoungGen: 320K->0K(7168K)] [ParOldGen: 2064K->1278K(12288K)] 2384K->1278K(19456K), [Metaspace: 2476K->2476K(1056768K)], 0.0039614 secs] [Times: user=0.01 sys=0.00, real=0.01 secs] 
+                                                    GC后                    GC前                         GC后                              GC后
+  
+    > _待确认_
+    
+          GC后堆大小=GC后PSYoungGen+oldGen-used
     
         
 + 名词解释
