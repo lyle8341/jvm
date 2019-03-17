@@ -3,7 +3,6 @@ package com.lyle.jvm.test_springboot_container;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Service;
 
 /**
  * 
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @version v1.0
  * @since 1.8  
  */
-@Service
+//@Service
 public class TestService implements ApplicationContextAware {
 
   @Override
