@@ -79,6 +79,9 @@
 * spring 中的 bean 是线程安全的吗  ???
   
   
-  
+* MyBatis缓存
+  - 默认支持一级缓存,不需要另外配置,但是在跟 spring 整合的时候,进行 mapper 代理开发的方式时,mybatis 的一级缓存是不存在的 ,因为代理模板每次调用完之后都会关闭sqlSession.  
+  - 一个service方法中包括很多Mapper方法调用,事务控制在service中,可以有一级缓存,因为这里的sqlSession开始执行时打开,最后关闭
+  - 如果 sqlSession 里面出现 commit 操作, sqlSession 中的缓存会被全部清空,避免出现脏读.  
   
   
