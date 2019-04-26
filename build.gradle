@@ -33,4 +33,8 @@ dependencies {
     implementation 'org.openjdk.jol:jol-core:0.9'
     implementation 'classmexer:classmexer:0.03'
     compileOnly('org.projectlombok:lombok')
+    compile group: 'de.odysseus.juel', name: 'juel-api', version: '2.2.7'
+    compile group: 'de.odysseus.juel', name: 'juel-impl', version: '2.2.7'
+    compile group: 'de.odysseus.juel', name: 'juel-spi', version: '2.2.7'
+
 }
