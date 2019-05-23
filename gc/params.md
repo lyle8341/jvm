@@ -19,3 +19,7 @@ java -XX:+PrintFlagsFinal -version |grep JVMParamName
     Xmn:对newSize、MaxnewSize两个参数同时进行配置(注意：JDK1.4之后才有该参数)
     NewRatio:设置老年代(除去永久代)与新生代的比例
     SurvivorRatio:表示伊甸园区(Eden)是幸存区To大小的10倍(也是幸存区From的10倍)
+    
+
+[HotSpot启动参数(常用 -XX 参数)](https://github.com/cncounter/translation/blob/master/tiemao_2014/HotSpot_VM_Options/HotSpot_VM_Options.md)
+    

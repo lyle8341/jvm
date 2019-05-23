@@ -1,0 +1,8 @@
+Java HotSpot(TM) 64-Bit Server VM (25.202-b08) for linux-amd64 JRE (1.8.0_202-b08), built on Dec 15 2018 12:40:22 by "java_re" with gcc 7.3.0
+Memory: 4k page, physical 12218304k(791464k free), swap 13440128k(13434256k free)
+CommandLine flags: -XX:G1HeapRegionSize=2097152 -XX:InitialHeapSize=10485760 -XX:MaxHeapSize=10485760 -XX:MaxNewSize=10485760 -XX:NewSize=10485760 -XX:+PrintGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseG1GC 
+Heap
+ garbage-first heap   total 10240K, used 2048K [0x00000000ff600000, 0x00000000ff800028, 0x0000000100000000)
+  region size 2048K, 2 young (4096K), 0 survivors (0K)
+ Metaspace       used 3021K, capacity 4496K, committed 4864K, reserved 1056768K
+  class space    used 330K, capacity 388K, committed 512K, reserved 1048576K

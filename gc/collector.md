@@ -268,13 +268,15 @@
     
         
 + 名词解释
-  > DefNewGeneration: default new generation  
-    ParNewGeneration: parallel new generation  
-    MSC: MarkSweepCompact  
-    Scavenge或者叫scavenging GC: copying GC的另一種叫法而已  
+  > **DefNewGeneration**: default new generation  
+    **ParNewGeneration**: parallel new generation  
+    **MSC**: MarkSweepCompact  
+    **Scavenge或者叫scavenging GC**: copying GC的另一種叫法而已  
     **PSMarkSweep**: ParallelScavenge的MarkSweep(LISP2演算法的mark-compact收集器)  
     **PSCompact**: ParallelScavenge-MarkCompact  
-    
+    **mutator**: 本意是改变者  
+    **Footprint**:占用的空间  
+    **intern**:保留/驻留  
         
         
 **Reference**
