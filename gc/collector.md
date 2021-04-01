@@ -278,6 +278,16 @@
     **Footprint**:占用的空间  
     **intern**:保留/驻留  
         
+
+
++ 并发标记算法
+  - 三色扫描算法（白，灰，黑）
+  - 在并发标记时，引用可能产生变化，白色对象有可能被错误回收
+  - 解决方案：
+    - SATB（snapshot at the beginning）-----G1采用
+    - Incremental Update ------CMS采用
+
+
         
 **Reference**
 >[名词解释][1]
