@@ -1,5 +1,6 @@
 buildscript {
     ext {
+
         springBootVersion = '2.1.1.RELEASE'
     }
     repositories {
@@ -24,6 +25,7 @@ repositories {
     mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     maven { url 'https://maven2.pavlab.msl.ubc.ca/' }
+    maven { url 'https://mvnrepository.com/artifact/classmexer/classmexer' }
     mavenCentral()
 }
 
@@ -31,7 +33,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.openjdk.jol:jol-core:0.9'
-    implementation 'classmexer:classmexer:0.03'
+//    implementation 'classmexer:classmexer:0.03'
+    implementation files('classmexer/classmexer-0.03.jar')
     compileOnly('org.projectlombok:lombok')
     compile group: 'de.odysseus.juel', name: 'juel-api', version: '2.2.7'
     compile group: 'de.odysseus.juel', name: 'juel-impl', version: '2.2.7'
